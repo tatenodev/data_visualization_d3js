@@ -30,4 +30,8 @@ const carsJSON = `[
     "price": 2200
   }
 ]`;
-export const cars = JSON.parse(carsJSON);
+const cars = JSON.parse(carsJSON);
+
+export const getCars = ()=> new Promise(resolve => {
+  setTimeout(() => resolve(cars), 2000);
+});

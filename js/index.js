@@ -1,6 +1,9 @@
-import { cars } from './cars.js';
+import { getCars } from './getCars.js';
 import { generateReport } from './generateReport.js';
 
-const message = generateReport(cars, 2000);
+document.getElementById('message-element').textContent = 'loading...';
 
-document.getElementById('message-element').textContent = message;
+getCars().then(cars => {
+  const message = generateReport(cars, 2000);
+  document.getElementById('message-element').textContent = message;
+});
