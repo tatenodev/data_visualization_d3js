@@ -1,11 +1,5 @@
 import { cars } from './cars.js';
-import { formatCar } from './formatCar.js';
-
-const generateReport = (cars, maxPrice) =>
-  cars
-    .filter(car => car.price < maxPrice)
-    .map(formatCar)
-    .join('\n');
+import { generateReport } from './generateReport.js';
 
 const message = generateReport(cars, 2000);
 
