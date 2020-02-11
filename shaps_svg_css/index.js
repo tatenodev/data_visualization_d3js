@@ -14,18 +14,31 @@ const circle = g.append('circle')
 const eyeSpacing = 100;
 const eyeYOffset = -70;
 const eyeRadius = 40;
+const eyebrowWidth = 70;
+const eyebrowHeight = 15;
 
-const leftEye = g.append('circle')
+const eyeG = g.append('g')
+.attr('transform', `translate(0,${eyeYOffset})`);
+
+const leftEye = eyeG.append('circle')
 .attr('r', eyeRadius)
 .attr('cx', -eyeSpacing)
-.attr('cy', eyeYOffset)
-.attr('fill', 'black');
 
-const rightEye = g.append('circle')
+const rightEye = eyeG.append('circle')
 .attr('r', eyeRadius)
 .attr('cx', eyeSpacing)
-.attr('cy', eyeYOffset)
-.attr('fill', 'black');
+
+const leftEyebrow = eyeG.append('rect')
+  .attr('x', -eyeSpacing -eyebrowWidth /2)
+  .attr('y', -70)
+  .attr('width', eyebrowWidth)
+  .attr('height', eyebrowHeight);
+
+const rightEyebrow = eyeG.append('rect')
+  .attr('x', eyeSpacing -eyebrowWidth /2)
+  .attr('y', -70)
+  .attr('width', eyebrowWidth)
+  .attr('height', eyebrowHeight);
 
 const mouth = g.append('path')
   .attr('d', d3.arc()({
