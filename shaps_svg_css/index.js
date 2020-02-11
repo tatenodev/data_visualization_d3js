@@ -13,19 +13,18 @@ const circle = g.append('circle')
 
 const eyeSpacing = 100;
 const eyeYOffset = -70;
+const eyeRadius = 40;
 
-const leftEye = svg.append('circle')
-.attr('r', 30)
-.attr('cx', width / 2 - eyeSpacing)
-.attr('cy', 500/2 + eyeYOffset)
-.attr('fill', 'yellow')
+const leftEye = g.append('circle')
+.attr('r', eyeRadius)
+.attr('cx', -eyeSpacing)
+.attr('cy', eyeYOffset)
 .attr('fill', 'black');
 
-const rightEye = svg.append('circle')
-.attr('r', 30)
-.attr('cx', width / 2 + eyeSpacing)
-.attr('cy', 500/2 + eyeYOffset)
-.attr('fill', 'yellow')
+const rightEye = g.append('circle')
+.attr('r', eyeRadius)
+.attr('cx', eyeSpacing)
+.attr('cy', eyeYOffset)
 .attr('fill', 'black');
 
 const mouth = g.append('path')
