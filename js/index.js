@@ -1,19 +1,9 @@
-import { cars } from './cars.js';
+import { getCars } from './getCars.js';
+import { generateReport } from './generateReport.js';
 
-const formatCar = car => {
-  const {
-    year,
-    make,
-    model,
-    price
-  } = car ;
-  return `${year} ${make}, ${model}, ${price}`;
-}
-cars
-.filter(car => car.price < 2000)
-.map(formatCar)
-.join('\n');
+document.getElementById('message-element').textContent = 'Loading...';
 
-const message = formatCar(cars[0]);
-
-document.getElementById('message-element').textContent = message;
+getCars().then(cars => {
+  const message = generateReport(cars, 2000);
+  document.getElementById('message-element').textContent = message;
+});
