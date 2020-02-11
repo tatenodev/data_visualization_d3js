@@ -16,34 +16,49 @@ const eyeYOffset = -70;
 const eyeRadius = 40;
 const eyebrowWidth = 70;
 const eyebrowHeight = 15;
+const eyebrowYOffset = -70;
 
-const eyeG = g.append('g')
-.attr('transform', `translate(0,${eyeYOffset})`);
+const eyesG = g
+  .append('g')
+    .attr('transform', `translate(0,${eyeYOffset})`);
 
-const leftEye = eyeG.append('circle')
-.attr('r', eyeRadius)
-.attr('cx', -eyeSpacing)
+const leftEye = eyesG
+  .append('circle')
+    .attr('r', eyeRadius)
+    .attr('cx', -eyeSpacing);
 
-const rightEye = eyeG.append('circle')
-.attr('r', eyeRadius)
-.attr('cx', eyeSpacing)
+const rightEye = eyesG
+  .append('circle')
+    .attr('r', eyeRadius)
+    .attr('cx', eyeSpacing);
 
-const leftEyebrow = eyeG.append('rect')
-  .attr('x', -eyeSpacing -eyebrowWidth /2)
-  .attr('y', -70)
-  .attr('width', eyebrowWidth)
-  .attr('height', eyebrowHeight);
+const eyebrowsG = eyesG
+  .append('g')
+    .attr('transform', `translate(0, ${eyebrowYOffset})`);
 
-const rightEyebrow = eyeG.append('rect')
-  .attr('x', eyeSpacing -eyebrowWidth /2)
-  .attr('y', -70)
-  .attr('width', eyebrowWidth)
-  .attr('height', eyebrowHeight);
+eyebrowsG
+  .transition().duration(2000)
+    .attr('transform', `translate(0, ${eyebrowYOffset - 50})`)
+  .transition().duration(2000)
+    .attr('transform', `translate(0, ${eyebrowYOffset})`);
 
-const mouth = g.append('path')
-  .attr('d', d3.arc()({
-    innerRadius: 150,
-    outerRadius: 170,
-    startAngle: Math.PI / 2,
-    endAngle: Math.PI * 3/2
+const leftEyebrow = eyebrowsG
+  .append('rect')
+    .attr('x', -eyeSpacing -eyebrowWidth /2)
+    .attr('width', eyebrowWidth)
+    .attr('height', eyebrowHeight);
+
+const rightEyebrow = eyebrowsG
+  .append('rect')
+    .attr('x', eyeSpacing -eyebrowWidth /2)
+    .attr('width', eyebrowWidth)
+    .attr('height', eyebrowHeight);
+
+const mouth = g
+  .append('path')
+    .attr('d', d3.arc()({
+      innerRadius: 150,
+      outerRadius: 170,
+      startAngle: Math.PI / 2,
+      endAngle: Math.PI * 3/2
   }));
