@@ -4,9 +4,15 @@ const width = +svg.attr('width');
 const height = +svg.attr('height');
 
 const render = data => {
+  const xScale = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.population)])
+    .range([0, width]);
+  
+  console.log(xScale.range());
+
   svg.selectAll('rect').data(data)
   .enter().append('rect')
-    .attr('width', 300)
+    .attr('width', d => xScale(d.population))
     .attr('height', 300)
 };
 
